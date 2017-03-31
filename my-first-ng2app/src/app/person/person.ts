@@ -1,9 +1,8 @@
 export class Person {
-    firstname: string;
-    lastname: string;
+    public firstname: string;
+    public lastname: string;
     constructor(firstname: string, lastname: string){
         this.firstname = firstname;
         this.lastname = lastname;
     }
-    
 }

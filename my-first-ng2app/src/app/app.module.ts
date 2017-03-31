@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { WelcomeComponent } from './welcome.component';
-import { ProductsComponent } from './products.component';
-import { AboutUsComponent } from './about-us.component';
-import { AdminComponent } from './admin.component';
-import { PageNotFoundComponent } from './page-not-found.component'
+import { WelcomeComponent } from './welcome/welcome.component';
+import { ProductsComponent } from './products/products.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { AdminComponent } from './admin/admin.component';
+import { PersonDetailComponent } from './person/person-detail.component'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { PersonService } from './person/person.service'
 
 @NgModule({
   imports: [
@@ -24,9 +26,10 @@ import { PageNotFoundComponent } from './page-not-found.component'
     ProductsComponent,
     AboutUsComponent,
     AdminComponent,
+    PersonDetailComponent,
     PageNotFoundComponent,
   ],
-  providers: [],
+  providers: [PersonService],
   bootstrap: [AppComponent]
 })
 

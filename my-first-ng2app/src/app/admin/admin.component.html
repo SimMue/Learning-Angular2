@@ -1,0 +1,9 @@
+<h2>{{title}}</h2>
+<form>
+<ul>
+    <li *ngFor="let person of persons" (click)="selectPerson(person)">
+        {{person.firstname}}, {{person.lastname}}
+    </li>
+</ul>
+<person-detail *ngIf="selectedPerson" [person]="selectedPerson"></person-detail>
+</form>
