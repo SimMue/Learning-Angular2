@@ -1,0 +1,23 @@
+.normalDiv, .lastDiv {
+    height: 100px;
+    width: 100px;
+    border: solid black 1px;
+    float: left;
+    display: table;
+    text-align: center;
+    font-size: 30px;
+    margin: -1px;    
+}
+
+.normalDiv {
+    clear: none;
+}
+
+.lastDiv {
+    clear: left;
+}
+
+span {
+  display: table-cell;
+  vertical-align: middle;
+}
