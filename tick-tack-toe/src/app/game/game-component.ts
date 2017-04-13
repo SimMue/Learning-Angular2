@@ -31,20 +31,19 @@ export class GameComponent {
         this.waitForPC = true;
         var thinkingTime = Math.floor((Math.random() * 1) + 1);
         setTimeout(() => {
-            var horizontalIndex = this.horizontalTraverse();
-            var verticalIndex = this.verticalTraverse();
+            var criticalIndex = this.analyzeField();
 
             var freeIndex;
             var occupyIndex;
-            if (horizontalIndex.length === 0) {
+            if (criticalIndex.length === 0) {
                 var randomIndex = Math.floor(Math.random() * this.freePlayingFields.length);
                 freeIndex = randomIndex;
                 occupyIndex = this.freePlayingFields[randomIndex];
                 this.playingFields[occupyIndex] = Occupations.ByPc;
             }
             else {
-                var randomIndex = Math.floor(Math.random() * horizontalIndex.length);
-                occupyIndex = horizontalIndex[randomIndex];
+                var randomIndex = Math.floor(Math.random() * criticalIndex.length);
+                occupyIndex = criticalIndex[randomIndex];
                 freeIndex = this.freePlayingFields.indexOf(occupyIndex);
                 this.playingFields[occupyIndex] = Occupations.ByPc;
             }
@@ -54,12 +53,16 @@ export class GameComponent {
             , thinkingTime);
     }
 
-    analyzeField() {
+    analyzeField() : number[] {
+        var horizontalIndex = this.horizontalTraverse();
+        var verticalIndex = this.verticalTraverse();
+        var diagonalIndex = this.diagonalTransvere();
 
+        return horizontalIndex.concat(verticalIndex, diagonalIndex);
     }
 
     horizontalTraverse(): number[] {
-        var dangerousIndex = [];
+        var criticalIndex = [];
         var index = 0;
 
         for (var y = 0; y < 3; y++) {
@@ -78,18 +81,18 @@ export class GameComponent {
 
             if (stack.length >= 2) {
                 switch (y) {
-                    case 0: dangerousIndex.push(this.findDangerousIndex(stack, 6)); break;
-                    case 1: dangerousIndex.push(this.findDangerousIndex(stack, 15)); break;
-                    case 2: dangerousIndex.push(this.findDangerousIndex(stack, 24)); break;
+                    case 0: criticalIndex.push(this.findCriticalIndex(stack, 6)); break;
+                    case 1: criticalIndex.push(this.findCriticalIndex(stack, 15)); break;
+                    case 2: criticalIndex.push(this.findCriticalIndex(stack, 24)); break;
                 }
             }
         }
 
-        return dangerousIndex;
+        return criticalIndex;
     }
 
     verticalTraverse(): number[] {
-        var dangerousIndex = [];
+        var criticalIndex = [];
         var index = 0;
 
         for (var x = 0; x < 3; x++) {
@@ -107,19 +110,19 @@ export class GameComponent {
             }
 
             if (stack.length >= 2) {
-                switch (y) {
-                    case 0: dangerousIndex.push(this.findDangerousIndex(stack, 12)); break;
-                    case 1: dangerousIndex.push(this.findDangerousIndex(stack, 15)); break;
-                    case 2: dangerousIndex.push(this.findDangerousIndex(stack, 18)); break;
+                switch (x) {
+                    case 0: criticalIndex.push(this.findCriticalIndex(stack, 12)); break;
+                    case 1: criticalIndex.push(this.findCriticalIndex(stack, 15)); break;
+                    case 2: criticalIndex.push(this.findCriticalIndex(stack, 18)); break;
                 }
             }
         }
 
-        return dangerousIndex;
+        return criticalIndex;
     }
 
     diagonalTransvere(): number[] {
-        var dangerousIndex = [];       
+        var criticalIndex = [];       
 
         var stack = [];
         for (var i = 0; i < 3; i++) {
@@ -132,7 +135,7 @@ export class GameComponent {
             }            
         }
         if (stack.length >= 2) {
-            dangerousIndex.push(this.findDangerousIndex(stack, 15));
+            criticalIndex.push(this.findCriticalIndex(stack, 15));
         }
 
         stack = [];
@@ -146,13 +149,13 @@ export class GameComponent {
             }            
         }
         if (stack.length >= 2) {
-            dangerousIndex.push(this.findDangerousIndex(stack, 15));
+            criticalIndex.push(this.findCriticalIndex(stack, 15));
         }
 
-        return dangerousIndex;
+        return criticalIndex;
     }
 
-    findDangerousIndex(stack: number[], max: number): number {
+    findCriticalIndex(stack: number[], max: number): number {
         var sum = 0;
 
         stack.forEach(element => {
