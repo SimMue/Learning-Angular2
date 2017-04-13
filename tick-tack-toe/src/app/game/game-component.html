@@ -1,3 +1,3 @@
 <div *ngFor="let playingField of playingFields; let i = index;" [ngClass]="setStyle(i)" (click)="click(i)">
-    <span>{{playingField}}</span>
+    <img [src]="imagePaths[i]">
 </div>

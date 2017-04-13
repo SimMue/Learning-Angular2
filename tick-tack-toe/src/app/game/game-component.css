@@ -1,6 +1,6 @@
 .normalDiv, .lastDiv {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     border: solid black 1px;
     float: left;
     display: table;
@@ -20,4 +20,9 @@
 span {
   display: table-cell;
   vertical-align: middle;
+}
+
+img {
+    height: 100%;
+    width: 100%;
 }
