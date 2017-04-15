@@ -1,0 +1,5 @@
+<h2 class="title">Game</h2>
+
+<div class="boardColumn" [style.height]="boardFieldSize" *ngFor="let column of board">
+    <div class="boardField" [style.width]="boardFieldSize" [style.padding-top]="boardFieldSize" [style.margin]="boardFieldMargin" *ngFor="let row of column"></div>   
+</div>
