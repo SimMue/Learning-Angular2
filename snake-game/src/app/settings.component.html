@@ -1,8 +1,6 @@
-<h2>
-{{title}}
-</h2>
+<h2 class="containerTitle">{{title}}</h2>
 <div class="separator"></div>
 <p>Height {{height}}</p>
-<input type="range"  min="10" max="30" [(ngModel)]="height" (input)="setBoardSize()" />
+<input type="range" min="10" max="30" [(ngModel)]="height" (input)="setBoardSize()" />
 <p>Width {{width}}</p>
-<input type="range"  min="10" max="30" [(ngModel)]="width" (input)="setBoardSize()" />
+<input type="range" min="10" max="30" [(ngModel)]="width" (input)="setBoardSize()" />

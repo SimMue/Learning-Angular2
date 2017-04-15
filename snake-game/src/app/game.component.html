@@ -1,5 +1,7 @@
-<h2 class="title">Game</h2>
-
-<div class="boardColumn" [style.height]="boardFieldSize" *ngFor="let column of board">
-    <div class="boardField" [style.width]="boardFieldSize" [style.padding-top]="boardFieldSize" [style.margin]="boardFieldMargin" *ngFor="let row of column"></div>   
+<h2 class="containerTitle">Game</h2>
+<div class="separator"></div>
+<input type="button" value="New Game" (click)="startNewGame()"/>
+<input type="button" value="Cancel" (click)="cancelGame()"/>
+<div class="boardColumn" *ngFor="let column of board">
+    <div [ngClass]="{'boardField': row === false, 'boardFieldOccupied': row === true  }" [style.width]="boardFieldSize" [style.padding-top]="boardFieldSize" [style.margin]="boardFieldMargin" *ngFor="let row of column"></div>   
 </div>

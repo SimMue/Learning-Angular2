@@ -1,4 +1,4 @@
-header {
+header {   
     text-align: center;
 }
 
@@ -15,8 +15,7 @@ header {
 .gameContainer {
     width: 50%;
     min-width: 300px;
-    margin-left: 15%;
-    padding: 10px;
+    margin-left: 15%;    
     background-color: lightcoral;
     box-shadow: 15px 10px 15px #888888;
     box-sizing: border-box;
@@ -26,8 +25,9 @@ header {
 .settingsContainer {
     width: 20%;
     min-width: 200px;
-    background-color: lightsalmon;
-    box-shadow: 10px 10px 15px #888888;
     float: right;
     margin-right: 15%;
+    background-color: lightsalmon;
+    box-shadow: 10px 10px 15px #888888;
+    
 }

@@ -1,23 +1,24 @@
-.title {
-    margin-top: 0;
-    margin-bottom: 5%;
-}
-
 .boardColumn {
     width: 100%;
-    height: 5%;
     box-sizing: border-box;    
 }
 
-.boardField {
+.boardField, .boardFieldOccupied {
     width: 5%;
     padding-top: 5%;
     margin: 0.2%;
     display: inline-block;
     vertical-align: middle;
-    background-color: lightgrey;
     box-shadow: 2px 2px 12px black;
     /*animation: 1s shrink;*/
+}
+
+.boardField {
+    background-color: lightgrey;
+}
+
+.boardFieldOccupied {
+    background-color: orange;
 }
 
 

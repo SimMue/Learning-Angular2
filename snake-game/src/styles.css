@@ -1,8 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 html, body {
-    height: 90%;
+    height: 95%;
     min-height: 750px;
     min-width: 1000px;
     margin: 0px;
     padding: 0px;
+}
+
+.containerTitle {
+    margin: 10px;
+}
+
+.separator {
+    width: 60%;
+    margin: 10px auto;    
+    border-bottom: solid white 3px;
 }
