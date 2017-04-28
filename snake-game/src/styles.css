@@ -1,14 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 html, body {
-    height: 95%;
+    height: 98%;
     min-height: 750px;
     min-width: 1000px;
     margin: 0px;
     padding: 0px;
-}
-
-.containerTitle {
-    margin: 10px;
 }
 
 .separator {

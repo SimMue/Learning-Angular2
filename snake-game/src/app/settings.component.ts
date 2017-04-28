@@ -15,7 +15,7 @@ export class SettingsComponent {
     title = "Settings";
     
 
-    setBoardSize() {
+    private setBoardSize() {
         this.settingsService.setBoardSize(this.height, this.width);
     }
 }

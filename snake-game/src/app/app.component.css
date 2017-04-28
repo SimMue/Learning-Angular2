@@ -1,8 +1,6 @@
-header {   
-    text-align: center;
-}
-
 .gameContainer, .settingsContainer {
+    margin-top: 1%;
+    padding-top: 5%;
     height: 100%;
     align-content: center;
     text-align: center;
@@ -13,6 +11,7 @@ header {
 }
 
 .gameContainer {
+    position: relative;
     width: 50%;
     min-width: 300px;
     margin-left: 15%;    
@@ -23,11 +22,12 @@ header {
 }
 
 .settingsContainer {
+    position: relative;
     width: 20%;
     min-width: 200px;
     float: right;
     margin-right: 15%;
     background-color: lightsalmon;
     box-shadow: 10px 10px 15px #888888;
-    
+    box-sizing: border-box;    
 }

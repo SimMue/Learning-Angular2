@@ -4,16 +4,17 @@ import { Injectable } from '@angular/core';
 export class SettingsService {
     private BOARD_HEIGHT: number = 10;    
     private BOARD_WIDTH: number = 10;
+    public Disabled = false;
 
-    getHeight(): number {
+    public getHeight(): number {
         return this.BOARD_HEIGHT;
     }
 
-    getWidth(): number {
+    public getWidth(): number {
         return this.BOARD_WIDTH;
     }
 
-    setBoardSize(height: number, width: number) {
+    public setBoardSize(height: number, width: number) {
         this.BOARD_HEIGHT = height;
         this.BOARD_WIDTH = width;
     }
