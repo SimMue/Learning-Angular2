@@ -1,0 +1,9 @@
+.slider {
+    position: absolute;
+    top: 0;
+    left: 300;
+    width: 5px;
+    background-color: black;
+    cursor: w-resize;
+    float: left;
+}

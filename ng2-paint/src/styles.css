@@ -7,7 +7,8 @@ html, body {
     padding: 0;
 }
 
-.tool-box, .file-nav {
+.tool-box, .file-nav, .slider {
+    height: 100%;  
     box-sizing: border-box;
     padding: 30px 5px 30px 5px;
     margin: 0;
@@ -15,6 +16,7 @@ html, body {
     font-weight: bold;
     float: left;
 }
+
 
 .icon {
     padding: 0;

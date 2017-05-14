@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ToolBoxComponent } from './tool.box.component';
 import { FileNavComponent } from './file.nav.component';
+import { SliderComponent } from './slider.component';
 
 import { AppComponent } from './app.component';
 
@@ -12,6 +13,7 @@ import { AppComponent } from './app.component';
     AppComponent,
     ToolBoxComponent,
     FileNavComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,

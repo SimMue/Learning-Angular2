@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, AfterViewInit } from '@angular/core';
+import { SliderService } from './slider.service';
 
 @Component({
     selector: 'tool-box',
@@ -7,24 +8,14 @@ import { Component } from '@angular/core';
 })
 
 export class ToolBoxComponent {
-    private isMouseDown: boolean = false;
-    private mouseDragStartX: number = 0;
-    private width = '20%';
-    
+    private width: number;  
 
-    private mouseDown(event: MouseEvent) {
-        this.isMouseDown = true;
-        this.mouseDragStartX = event.clientX;
-        console.log(this.mouseDragStartX);
+    constructor(private sliderService: SliderService) {
+        this.width = 100;
+        this.sliderService.offsetObservable.subscribe(value => value > 100 ? this.setWidth(value) : this.setWidth(100));
     }
 
-    private mouseMove(event: MouseEvent) {
-        if (this.isMouseDown) {
-            this.width = event.clientX + 'px';
-        }
-    }
-
-    private mouseUp(event: MouseEvent) {
-        this.isMouseDown = false;
+    private setWidth(value: number) {
+        this.width = this.width + value - this.sliderService.startPosition;
     }
 }
