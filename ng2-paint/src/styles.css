@@ -1,20 +1,23 @@
 html, body {
     height: 100%;
-    width: 80%;
+    width: 100%;
     min-height: 700px;
     min-width: 500px;
     margin: 0;
     padding: 0;
 }
 
-.tool-box, .file-nav, .slider {
+.tool-box, .file-nav, .slider, .paint {
     height: 100%;  
     box-sizing: border-box;
-    padding: 30px 5px 30px 5px;
     margin: 0;
     color: #adadad;
     font-weight: bold;
     float: left;
+}
+
+.tool-box, .file-nav, .slider {
+    padding: 30px 5px 30px 5px;    
 }
 
 

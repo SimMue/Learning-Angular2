@@ -1,9 +1,10 @@
 .slider {
     position: absolute;
     top: 0;
-    left: 300;
+    left: 150px;
     width: 5px;
-    background-color: black;
+    background-color: #636363;
     cursor: w-resize;
     float: left;
+    user-select: none;
 }

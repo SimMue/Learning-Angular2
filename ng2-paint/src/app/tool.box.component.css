@@ -1,8 +1,9 @@
 .tool-box {
-    width: 20%;
+    width: 150px;
     max-width: 500px;
     background-color: #636363;
     min-width: 100px;
+    user-select: none;
 }
 
 h3 {

@@ -1,28 +1,28 @@
 import { Component } from '@angular/core';
-import { SliderService } from './slider.service';
+import { SliderControlService } from './slider.control.service';
+import { PainterService } from './painter.service'; 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [SliderService],
+  providers: [SliderControlService, PainterService],
 })
 
 export class AppComponent {
   title = 'Paint';
 
-  constructor(private sliderService: SliderService) { }
+  constructor(private sliderControlService: SliderControlService) { }
 
   private mouseMove(event: MouseEvent) {
-    if (this.sliderService.isMouseDown) {
-      this.sliderService.notifyNewOffset(event.clientX);
+    if (this.sliderControlService.getIsMouseDown()) {
+      this.sliderControlService.notifyNewPosition(event.clientX);
     }
   }
 
   private mouseUp() {
-    if (this.sliderService.isMouseDown == true)
-    {
-      this.sliderService.isMouseDown = false;
+    if (this.sliderControlService.getIsMouseDown() == true) {
+      this.sliderControlService.setAndNotifyIsMouseDown(false);
     }
   }
 }
