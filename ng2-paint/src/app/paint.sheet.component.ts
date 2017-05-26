@@ -3,6 +3,7 @@ import { SliderControlService } from './slider.control.service';
 import { WidthChangeable } from './width.changeable';
 import { Painter } from './painter';
 import { PainterService } from './painter.service';
+import { WidthInitService } from './width.init.service';
 
 @Component({
     selector: 'paint-sheet',
@@ -16,34 +17,24 @@ export class PaintSheetComponent extends WidthChangeable {
     private painter: Painter;
     private height: number;
 
-    constructor(sliderControlService: SliderControlService, private painterService: PainterService) {
-        super(sliderControlService, 1000);
-        this.height = 950;
+    constructor(sliderControlService: SliderControlService, private painterService: PainterService, private widthInitService: WidthInitService) {
+        super(sliderControlService, widthInitService.paintSheetWidth, widthInitService.paintSheetMinWidht, widthInitService.paintSheetMaxWidht, true);
     }
 
     ngAfterViewInit() {
-        let canvasElement = <HTMLCanvasElement>this.sheetReference.nativeElement;
-        canvasElement.height = this.height;
-        canvasElement.width = this.width;  
-        this.painter = new Painter(this.painterService, canvasElement);
+        let sheetElement = <HTMLCanvasElement>this.sheetReference.nativeElement;
+        sheetElement.width = this.changingWidth;
+        this.painter = new Painter(this.painterService, sheetElement);
+        console.log(this.changingWidth);
+        console.log(this.height);
     }
 
-    protected renderWidth(value: number) {
-        let widthDiff = value - this.sliderControlService.startPosition;
-        let renderWidth = this.currentWidth - widthDiff;
-        if (renderWidth < 600) {
-            this.width = 600;
-        }
-        else if (renderWidth > 1000) {
-            this.width = 1000;
-        }
-        else {
-            this.width = renderWidth;
-        }
+    protected renderChangingWidth(value: number, inverted: boolean) {
+        super.renderChangingWidth(value, inverted);
 
         if (this.painter != null)
         {
-            this.painter.scale(this.width);
+            this.painter.scale(this.changingWidth);
         }
     }
 

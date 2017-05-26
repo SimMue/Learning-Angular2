@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SliderControlService } from './slider.control.service';
+import { WidthInitService } from './width.init.service';
 
 @Component({
     selector: 'slider-control',
@@ -9,21 +10,27 @@ import { SliderControlService } from './slider.control.service';
 
 export class SliderControlComponent {
     private leftPosition: number;
+    private minLeftPosition: number;
+    private maxLeftPosition: number;
     private offsetX: number;
 
-    constructor(private sliderControlService: SliderControlService) {
+    constructor(private sliderControlService: SliderControlService, private widthInitService: WidthInitService) {
+        this.leftPosition = widthInitService.fileNavWidth + widthInitService.toolBoxWidth;
+        this.minLeftPosition = widthInitService.fileNavWidth + widthInitService.toolBoxMinWidth;
+        this.maxLeftPosition = widthInitService.fileNavWidth + widthInitService.toolBoxMaxWidth;
         this.sliderControlService.positionObservable.subscribe(value => this.setLeftPosition(value));
     }
 
     private setLeftPosition(value: number) {
-        if (value < 150) {
-            this.leftPosition = 150 - this.offsetX;
+        let newPosition = value - this.offsetX;
+        if (newPosition < this.minLeftPosition) {
+            this.leftPosition = this.minLeftPosition;
         }
-        else if (value > 550) {
-            this.leftPosition = 550 - this.offsetX;
+        else if (newPosition > this.maxLeftPosition) {
+            this.leftPosition = this.maxLeftPosition;
         }
         else {
-            this.leftPosition = value - this.offsetX;
+            this.leftPosition = newPosition;
         }
     }
 

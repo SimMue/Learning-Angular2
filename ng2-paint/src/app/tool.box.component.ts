@@ -1,6 +1,7 @@
 import { Component, ElementRef, AfterViewInit } from '@angular/core';
 import { SliderControlService } from './slider.control.service';
 import { WidthChangeable } from './width.changeable';
+import { WidthInitService } from './width.init.service';
 
 @Component({
     selector: 'tool-box',
@@ -9,23 +10,7 @@ import { WidthChangeable } from './width.changeable';
 })
 
 export class ToolBoxComponent extends WidthChangeable {
-    constructor(sliderControlService: SliderControlService) {
-        super(sliderControlService, 100);             
+    constructor(sliderControlService: SliderControlService, private widthInitService: WidthInitService) {
+        super(sliderControlService, widthInitService.toolBoxWidth, widthInitService.toolBoxMinWidth, widthInitService.toolBoxMaxWidth, false);
     }
-
-    protected renderWidth(value: number) {
-        let widthDiff = value - this.sliderControlService.startPosition;
-        let renderWidth = this.currentWidth + widthDiff;
-        if (renderWidth < 100) {
-            this.width = 100;
-        }
-        else if (renderWidth > 500)
-        {
-            this.width = 500;
-        }
-        else
-        {
-            this.width = renderWidth;
-        }
-    }    
 }

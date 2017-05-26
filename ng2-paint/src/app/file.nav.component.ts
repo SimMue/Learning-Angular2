@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WidthInitService } from './width.init.service';
 
 @Component({
     selector: 'file-nav',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
 })
 
 export class FileNavComponent {
+    private width: number;
 
+    constructor(private widthInitService: WidthInitService) {
+        this.width = widthInitService.fileNavWidth;
+    }
 }
