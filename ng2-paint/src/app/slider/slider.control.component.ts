@@ -13,11 +13,12 @@ export class SliderControlComponent {
     private minLeftPosition: number;
     private maxLeftPosition: number;
     private offsetX: number;
+    private width: number = 10;
 
     constructor(private sliderControlService: SliderControlService, private widthInitService: WidthInitService) {
-        this.leftPosition = sliderControlService.startPosition;
-        this.minLeftPosition = widthInitService.fileNavWidth + widthInitService.toolBoxMinWidth;
-        this.maxLeftPosition = widthInitService.fileNavWidth + widthInitService.toolBoxMaxWidth;
+        this.leftPosition = sliderControlService.startPosition-this.width;
+        this.minLeftPosition = widthInitService.fileNavWidth + widthInitService.toolBoxMinWidth-this.width;
+        this.maxLeftPosition = widthInitService.fileNavWidth + widthInitService.toolBoxMaxWidth-this.width;
         this.sliderControlService.positionObservable.subscribe(value => this.setLeftPosition(value));
     }
 

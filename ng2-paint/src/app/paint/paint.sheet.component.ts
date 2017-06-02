@@ -1,10 +1,10 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { Painter } from './painter';
 import { PainterToolService } from './painter.tool.service';
 import { SliderControlService } from '../slider/slider.control.service';
 import { WidthChangeable } from '../slider/width.changeable';
 import { WidthInitService } from '../slider/width.init.service';
-import { PainterPosition } from './painter.position';
+import { PainterPosition } from './shapes/painter.position';
 
 @Component({
     selector: 'paint-sheet',
@@ -12,7 +12,7 @@ import { PainterPosition } from './painter.position';
     styleUrls: ['./paint.sheet.component.css'],
 })
 
-export class PaintSheetComponent extends WidthChangeable {
+export class PaintSheetComponent extends WidthChangeable implements AfterViewInit {
     @ViewChild('sheet') sheetReference: ElementRef;
     private sheet: HTMLCanvasElement;
     private isDrawing: boolean;
@@ -44,7 +44,6 @@ export class PaintSheetComponent extends WidthChangeable {
         this.sheet.width = width;
         this.sheet.height = height;
         this.painter.redrawAll();
-
     }
 
     private setIsDrawing(value: boolean) {

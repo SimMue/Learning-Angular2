@@ -1,8 +1,7 @@
 .slider {
     position: absolute;
     bottom: 0;
-    width: 10px;
-    background-color: #636363;
+    background-color: transparent;
     cursor: w-resize;
     float: left;
     user-select: none;

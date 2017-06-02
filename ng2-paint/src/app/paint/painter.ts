@@ -1,6 +1,6 @@
 import { PainterToolService } from './painter.tool.service';
-import { PainterShape } from './painter.shape';
-import { PainterPosition } from './painter.position';
+import { PainterShape } from './shapes/painter.shape';
+import { PainterPosition } from './shapes/painter.position';
 
 export class Painter {
     private shapes: PainterShape[] = [];
@@ -17,7 +17,7 @@ export class Painter {
     }
 
     public render(position: PainterPosition) {
-        this.currentShape.clear(this.sheetContext);      
+        this.currentShape.clear(this.sheetContext);
         this.sheetContext.beginPath();
         this.currentShape.update(position);
         this.redrawAll();

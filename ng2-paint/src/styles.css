@@ -16,18 +16,25 @@ html, body {
     float: left;
 }
 
-.tool-box, .file-nav {
+.file-nav {
     padding: 30px 5px 30px 5px;    
 }
 
+.tool-box {
+    padding: 10px 0px 30px 0px;
+}
 
-.icon {
+.icon, .focused-icon {
     padding: 0;
     margin: 20px 0px 20px 0;
     display: block;
     text-align: center;
 }
 
-.icon:hover {
+.focused-icon {
+    background: lightgray;
+}
+
+.icon:hover, .focused-icon:hover {
     color: white;
 }

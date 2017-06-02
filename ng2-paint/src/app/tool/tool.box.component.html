@@ -1,3 +1,6 @@
 <aside class="tool-box" [style.width.px]="changingWidth">
   <h3>Toolbox</h3>
+  <span id="line" class="fa fa-minus fa-2x icon" (click)="switchTool($event)" aria-hidden="true"></span>
+  <span id="circle" class="fa fa-circle-o fa-2x icon" (click)="switchTool($event)" aria-hidden="true"></span>
+  <span id="pen" class="fa fa-pencil fa-2x icon" (click)="switchTool($event)" aria-hidden="true"></span>    
 </aside>
