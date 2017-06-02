@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { SliderControlService } from './slider.control.service';
-import { PainterService } from './painter.service'; 
-import { WidthInitService } from './width.init.service';
+import { SliderControlService } from './slider/slider.control.service';
+import { WidthInitService } from './slider/width.init.service';
+import { PainterToolService } from './paint/painter.tool.service'; 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [SliderControlService, PainterService, WidthInitService],
+  providers: [SliderControlService, PainterToolService, WidthInitService],
 })
 
 export class AppComponent {

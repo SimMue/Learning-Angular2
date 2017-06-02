@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WidthInitService } from './width.init.service';
+import { WidthInitService } from '../slider/width.init.service';
 
 @Component({
     selector: 'file-nav',

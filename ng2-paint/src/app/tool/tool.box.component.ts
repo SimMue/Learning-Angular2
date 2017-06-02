@@ -1,7 +1,7 @@
 import { Component, ElementRef, AfterViewInit } from '@angular/core';
-import { SliderControlService } from './slider.control.service';
-import { WidthChangeable } from './width.changeable';
-import { WidthInitService } from './width.init.service';
+import { SliderControlService } from '../slider/slider.control.service';
+import { WidthChangeable } from '../slider/width.changeable';
+import { WidthInitService } from '../slider/width.init.service';
 
 @Component({
     selector: 'tool-box',

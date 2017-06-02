@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
 import { WidthInitService } from './width.init.service';
 
 @Injectable()
 export class SliderControlService {
     public startPosition: number;
     private isMouseDown: boolean = false;
-    private positionSubject = new BehaviorSubject<number>(0);
+    private positionSubject = new Subject<number>();
     public positionObservable = this.positionSubject.asObservable();
-    private mouseDownSubject = new BehaviorSubject<boolean>(false);
+    private mouseDownSubject = new Subject<boolean>();
     public mouseDownObservable = this.mouseDownSubject.asObservable();
 
     constructor(widthInitService: WidthInitService)
@@ -16,8 +16,8 @@ export class SliderControlService {
         this.startPosition = widthInitService.fileNavWidth + widthInitService.toolBoxWidth;
     }
 
-    public notifyNewPosition(value: number) {  
-        this.positionSubject.next(value);        
+    public notifyNewPosition(value: number) { 
+        this.positionSubject.next(value);   
     }
 
     public setAndNotifyIsMouseDown(value: boolean) {

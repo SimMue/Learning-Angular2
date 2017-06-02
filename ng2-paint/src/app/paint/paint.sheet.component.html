@@ -1,0 +1,2 @@
+<canvas #sheet class="paint" (window:resize)="renderHeight()" [(style.width.px)]="changingWidth" (mousedown)="createNewShape($event)" (mousemove)="renderShape($event)" (mouseup)="setIsDrawing(false)">
+</canvas>

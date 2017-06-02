@@ -1,3 +1,5 @@
+import { PainterPosition } from './painter.position';
+
 export abstract class PainterShape {
     protected x: number;
     protected y: number;
@@ -9,5 +11,5 @@ export abstract class PainterShape {
 
     public abstract draw(sheetContext: CanvasRenderingContext2D);
     public abstract clear(sheetContext: CanvasRenderingContext2D);
-    public abstract update(x: number, y: number);
+    public abstract update(position: PainterPosition);
 }

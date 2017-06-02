@@ -11,7 +11,7 @@ export abstract class WidthChangeable {
         this.changingWidth = this.width;
         this.minWidth = minWidth;
         this.maxWidth = maxWidth;
-        this.sliderControlService.positionObservable.subscribe(value => this.renderChangingWidth(value, invertedWidthRender));
+        this.sliderControlService.positionObservable.subscribe(value => this.renderWidth(value, invertedWidthRender));
         this.sliderControlService.mouseDownObservable.subscribe(value => this.setWidth(value));
     }
 
@@ -21,20 +21,21 @@ export abstract class WidthChangeable {
         }
     }
 
-    protected renderChangingWidth(value: number, inverted: boolean) {
+    protected renderWidth(value: number, inverted: boolean) {
         let widthDiff = value - this.sliderControlService.startPosition;
         let renderWidth = inverted ? this.width - widthDiff : this.width + widthDiff;
+        this.changingWidth = this.getWidth(renderWidth);
+    }
 
-        if (renderWidth < this.minWidth) {
-            this.changingWidth = this.minWidth;
+    private getWidth(value: number): number {
+        if (value < this.minWidth) {
+            return this.minWidth;
         }
-        else if (renderWidth > this.maxWidth)
+        else if (value > this.maxWidth)
         {
-            this.changingWidth = this.maxWidth;
+            return this.maxWidth;
         }
-        else
-        {
-            this.changingWidth = renderWidth;
-        }
-    }  
+        
+        return value;        
+    }
 }

@@ -15,7 +15,7 @@ export class SliderControlComponent {
     private offsetX: number;
 
     constructor(private sliderControlService: SliderControlService, private widthInitService: WidthInitService) {
-        this.leftPosition = widthInitService.fileNavWidth + widthInitService.toolBoxWidth;
+        this.leftPosition = sliderControlService.startPosition;
         this.minLeftPosition = widthInitService.fileNavWidth + widthInitService.toolBoxMinWidth;
         this.maxLeftPosition = widthInitService.fileNavWidth + widthInitService.toolBoxMaxWidth;
         this.sliderControlService.positionObservable.subscribe(value => this.setLeftPosition(value));
